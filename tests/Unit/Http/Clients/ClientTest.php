@@ -1,6 +1,6 @@
 <?php
 
-namespace LeeBrooks3\Laravel\OAuth2\Tests\Unit\Http\Clients;
+namespace LeeBrooks3\OAuth2\Tests\Unit\Http\Clients;
 
 use GuzzleHttp\Psr7\Response;
 use LeeBrooks3\OAuth2\Http\Clients\Client;
