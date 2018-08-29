@@ -1,0 +1,39 @@
+{
+  "name": "leebrooks3/php-oauth2-client",
+  "description": "A PHP library for consuming an OAuth2 server.",
+  "keywords": ["php", "oauth2"],
+  "license": "MIT",
+  "type": "project",
+  "require": {
+    "php": ">=7.1",
+    "leebrooks3/php": "^0.0.4"
+  },
+  "require-dev": {
+    "fzaninotto/faker": "^1.7",
+    "phpunit/phpunit": "^7.0"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/leebrooks3/php"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "LeeBrooks3\\OAuth2\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "LeeBrooks3\\OAuth2\\Tests\\": "tests/",
+      "LeeBrooks3\\Tests\\": "vendor/leebrooks3/php/tests/"
+    }
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "optimize-autoloader": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
