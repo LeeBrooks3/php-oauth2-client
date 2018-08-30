@@ -5,7 +5,6 @@ namespace LeeBrooks3\OAuth2\Http\Clients;
 use LeeBrooks3\Http\Clients\Client as BaseClient;
 use LeeBrooks3\Models\ModelInterface;
 use LeeBrooks3\OAuth2\Models\AccessToken;
-use LeeBrooks3\OAuth2\Models\User;
 
 class Client extends BaseClient
 {
@@ -15,6 +14,13 @@ class Client extends BaseClient
      * @var string
      */
     protected $user;
+
+    /**
+     * The namespace or name of the key used to wrap the main data of the payload.
+     *
+     * @var string
+     */
+    protected $namespace = 'data';
 
     /**
      * The access token model class name.
@@ -191,11 +197,15 @@ class Client extends BaseClient
      * Makes a user instance.
      *
      * @param array $attributes
-     * @return User
+     * @return ModelInterface
      */
     protected function makeUser(array $attributes) : ModelInterface
     {
         $user = $this->user;
+
+        if ($this->namespace) {
+            $attributes = $attributes[$this->namespace];
+        }
 
         return new $user($attributes);
     }

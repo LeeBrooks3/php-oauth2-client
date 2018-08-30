@@ -91,7 +91,9 @@ class ClientTest extends TestCase
             'token_type' => 'Bearer',
             'access_token' => $this->faker->uuid,
         ]);
-        $attributes = [];
+        $payload = [
+            'data' => [],
+        ];
 
         $this->mockClient->expects($this->once())
             ->method('get')
@@ -100,7 +102,7 @@ class ClientTest extends TestCase
                     'Authorization' => "{$accessToken->token_type} {$accessToken->access_token}",
                 ],
             ])
-            ->willReturn(new Response(200, [], \GuzzleHttp\json_encode($attributes)));
+            ->willReturn(new Response(200, [], \GuzzleHttp\json_encode($payload)));
 
         $result = $this->mockClient->getUser($accessToken);
 
