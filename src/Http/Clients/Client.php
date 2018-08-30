@@ -10,6 +10,20 @@ use LeeBrooks3\OAuth2\Models\User;
 class Client extends BaseClient
 {
     /**
+     * The user model class name.
+     *
+     * @var string
+     */
+    protected $user;
+
+    /**
+     * The access token model class name.
+     *
+     * @var string
+     */
+    protected $accessToken = AccessToken::class;
+
+    /**
      * The oauth2 client id.
      *
      * @var int
@@ -181,7 +195,9 @@ class Client extends BaseClient
      */
     protected function makeUser(array $attributes) : ModelInterface
     {
-        return new User($attributes);
+        $user = $this->user;
+
+        return new $user($attributes);
     }
 
     /**
@@ -192,6 +208,8 @@ class Client extends BaseClient
      */
     protected function makeAccessToken(array $attributes) : ModelInterface
     {
-        return new AccessToken($attributes);
+        $accessToken = $this->accessToken;
+
+        return new $accessToken($attributes);
     }
 }

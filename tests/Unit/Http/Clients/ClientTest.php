@@ -3,9 +3,9 @@
 namespace LeeBrooks3\OAuth2\Tests\Unit\Http\Clients;
 
 use GuzzleHttp\Psr7\Response;
-use LeeBrooks3\OAuth2\Http\Clients\Client;
 use LeeBrooks3\OAuth2\Models\AccessToken;
-use LeeBrooks3\OAuth2\Models\User;
+use LeeBrooks3\OAuth2\Tests\Examples\Http\Clients\ExampleClient;
+use LeeBrooks3\OAuth2\Tests\Examples\Models\ExampleUser;
 use LeeBrooks3\Tests\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 
@@ -14,7 +14,7 @@ class ClientTest extends TestCase
     /**
      * The client instance.
      *
-     * @var Client|MockObject
+     * @var ExampleClient|MockObject
      */
     private $mockClient;
 
@@ -67,7 +67,7 @@ class ClientTest extends TestCase
     {
         parent::setUp();
 
-        $this->mockClient = $this->getMockBuilder(Client::class)
+        $this->mockClient = $this->getMockBuilder(ExampleClient::class)
             ->setConstructorArgs([
                 $this->clientId = $this->faker->uuid,
                 $this->clientSecret = $this->faker->uuid,
@@ -104,7 +104,7 @@ class ClientTest extends TestCase
 
         $result = $this->mockClient->getUser($accessToken);
 
-        $this->assertInstanceOf(User::class, $result);
+        $this->assertInstanceOf(ExampleUser::class, $result);
     }
 
     /**
