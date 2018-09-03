@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "88e0f7844da83eb6d24bef1b64660496",
+    "content-hash": "ecfa104a051ee0473a9eccba54b15b96",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -189,7 +189,7 @@
         },
         {
             "name": "leebrooks3/php",
-            "version": "v0.0.5",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeeBrooks3/php.git",
@@ -1927,7 +1927,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "leebrooks3/php": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

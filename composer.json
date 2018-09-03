@@ -6,7 +6,7 @@
   "type": "project",
   "require": {
     "php": ">=7.1",
-    "leebrooks3/php": "^0.0.5"
+    "leebrooks3/php": "dev-master"
   },
   "require-dev": {
     "fzaninotto/faker": "^1.7",
