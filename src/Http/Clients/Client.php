@@ -16,13 +16,6 @@ class Client extends BaseClient
     protected $user;
 
     /**
-     * The namespace or name of the key used to wrap the main data of the payload.
-     *
-     * @var string
-     */
-    protected $namespace = 'data';
-
-    /**
      * The access token model class name.
      *
      * @var string
@@ -134,13 +127,11 @@ class Client extends BaseClient
     public function getUserToken(string $username, string $password) : AccessToken
     {
         $response = $this->post($this->tokenEndpoint, [
-            'form_params' => [
-                'grant_type' => 'password',
-                'client_id' => $this->clientId,
-                'client_secret' => $this->clientSecret,
-                'username' => $username,
-                'password' => $password,
-            ],
+            'grant_type' => 'password',
+            'client_id' => $this->clientId,
+            'client_secret' => $this->clientSecret,
+            'username' => $username,
+            'password' => $password,
         ]);
 
         $json = $response->getBody()->getContents();
@@ -160,13 +151,11 @@ class Client extends BaseClient
     public function getAuthToken(string $redirectUri, string $code) : AccessToken
     {
         $response = $this->post($this->tokenEndpoint, [
-            'form_params' => [
-                'grant_type' => 'authorization_code',
-                'client_id' => $this->clientId,
-                'client_secret' => $this->clientSecret,
-                'redirect_uri' => $redirectUri,
-                'code' => $code,
-            ],
+            'grant_type' => 'authorization_code',
+            'client_id' => $this->clientId,
+            'client_secret' => $this->clientSecret,
+            'redirect_uri' => $redirectUri,
+            'code' => $code,
         ]);
 
         $json = $response->getBody()->getContents();
@@ -202,10 +191,6 @@ class Client extends BaseClient
     protected function makeUser(array $attributes) : ModelInterface
     {
         $user = $this->user;
-
-        if ($this->namespace) {
-            $attributes = $attributes[$this->namespace];
-        }
 
         return new $user($attributes);
     }

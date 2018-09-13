@@ -92,7 +92,7 @@ class ClientTest extends TestCase
             'access_token' => $this->faker->uuid,
         ]);
         $payload = [
-            'data' => [],
+            [],
         ];
 
         $this->mockClient->expects($this->once())
@@ -122,13 +122,11 @@ class ClientTest extends TestCase
         $this->mockClient->expects($this->once())
             ->method('post')
             ->with($this->tokenEndpoint, [
-                'form_params' => [
-                    'grant_type' => 'password',
-                    'client_id' => $this->clientId,
-                    'client_secret' => $this->clientSecret,
-                    'username' => $username,
-                    'password' => $password,
-                ],
+                'grant_type' => 'password',
+                'client_id' => $this->clientId,
+                'client_secret' => $this->clientSecret,
+                'username' => $username,
+                'password' => $password,
             ])
             ->willReturn(new Response(200, [], \GuzzleHttp\json_encode([])));
 
@@ -150,13 +148,11 @@ class ClientTest extends TestCase
         $this->mockClient->expects($this->once())
             ->method('post')
             ->with($this->tokenEndpoint, [
-                'form_params' => [
-                    'grant_type' => 'authorization_code',
-                    'client_id' => $this->clientId,
-                    'client_secret' => $this->clientSecret,
-                    'redirect_uri' => $redirectUri,
-                    'code' => $code,
-                ],
+                'grant_type' => 'authorization_code',
+                'client_id' => $this->clientId,
+                'client_secret' => $this->clientSecret,
+                'redirect_uri' => $redirectUri,
+                'code' => $code,
             ])
             ->willReturn(new Response(200, [], \GuzzleHttp\json_encode([])));
 
